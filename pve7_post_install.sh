@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\e[1;33m This script will Disable the Enterprise Repo, Add & Enable the No-Subscription Repo and attempt the No-Nag fix. PVE7 ONLY \e[0m"
+echo -e "\e[1;33m This script will Disable the Enterprise Repo, Add & Enable the No-Subscription Repo and attempt the No-Nag fix. \e[0m"
 
 while true; do
     read -p "Start the PVE7 Post Install Script (y/n)?" yn
@@ -22,6 +22,6 @@ EOF
 
 sed -i.backup -z "s/res === null || res === undefined || \!res || res\n\t\t\t.data.status.toLowerCase() \!== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 
-echo -e "\e[1;33m Finished....Please Update Proxmox \e[0m"
+echo -e "\e[1;33m Finished... Please Update Proxmox \e[0m"
 systemctl restart pveproxy.service # for the no-nag
 

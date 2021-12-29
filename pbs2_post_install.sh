@@ -20,4 +20,4 @@ deb http://security.debian.org/debian-security bullseye-security main contrib
 deb http://download.proxmox.com/debian/pbs bullseye pbs-no-subscription
 EOF
 
-echo -e "\e[1;33m Finished....Please Update Proxmox \e[0m"
+echo -e "\e[1;33m Finished... Please Update Proxmox \e[0m"
