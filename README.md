@@ -9,8 +9,7 @@ Inspired by [tteck's Proxmox helper scripts](https://github.com/tteck/Proxmox)
 
 <h1 align="center" id="heading"> Proxmox VE 7 Post Install </h1>
 
-This script will Disable the Enterprise Repo, Add & Enable the No-Subscription Repo, Add & Disable Test Repo (repo's can be enabled/disabled via the UI in Repositories) 
-and attempt the *No-Nag* fix. 
+This script will Disable the Enterprise Repo, Add & Enable the No-Subscription Repo and attempt the *No-Nag* fix. 
  
 Run the following in the Proxmox Web Shell. ⚠️ **PVE7 ONLY**
 
@@ -19,6 +18,25 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-
 ```
 
 It's recommended to update Proxmox **after** running this script, **before** adding any VM/CT.
+
+____________________________________________________________________________________________ 
+
+</details>
+
+<details>
+<summary markdown="span">Proxmox BS 2 Post Install</summary>
+ 
+<p align="center"><img src="https://www.proxmox.com/images/proxmox/Proxmox_logo_standard_hex_400px.png" alt="Proxmox Server Solutions" height="55"/></p>
+
+<h1 align="center" id="heading"> Proxmox BS 2 Post Install </h1>
+
+This script will Disable the Enterprise Repo, Add & Enable the No-Subscription Repo and attempt the *No-Nag* fix. 
+ 
+Run the following in the Proxmox Web Shell. ⚠️ **PBS2 ONLY**
+
+```
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pve7_post_install.sh)"
+```
 
 ____________________________________________________________________________________________ 
 
