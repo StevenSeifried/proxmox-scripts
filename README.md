@@ -7,7 +7,7 @@ Scripts for Proxmox VE and Proxmox BS.
 - Proxmox VE = [Proxmox Virtual Environment](https://proxmox.com/en/proxmox-ve)
 - Proxmox BS = [Proxmox Backup Server](https://proxmox.com/en/proxmox-backup-server)
 
-**Note:** The LXC Contrainer are currently untested. But they should work. I'll test them soon.
+**Note:** The LXC Contrainers are currently untested. But they should work. I'll test them soon.
 
 <details>
 <summary markdown="span">Proxmox VE 7 Post Install</summary>
