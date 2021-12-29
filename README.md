@@ -6,7 +6,7 @@ Inspired by [tteck's Proxmox helper scripts](https://github.com/tteck/Proxmox)
 <details>
 <summary markdown="span">Jellyfin Server LXC</summary>
  
-<p align="center"><img src="https://www.plex.tv/wp-content/themes/plex/assets/img/plex-logo.svg" height="80"/></p>
+<p align="center"><img src="https://jellyfin.org/images/banner-dark.svg" height="80"/></p>
 
 <h1 align="center" id="heading"> Jellyfin Server LXC </h1>
 
