@@ -2,6 +2,8 @@
 
 Inspired by [tteck's Proxmox helper scripts](https://github.com/tteck/Proxmox)
 
+Scripts for Proxmox VE and Proxmox BS.
+
 - Proxmox VE = [Proxmox Virtual Environment](https://proxmox.com/en/proxmox-ve)
 - Proxmox BS = [Proxmox Backup Server](https://proxmox.com/en/proxmox-backup-server)
 
@@ -33,12 +35,12 @@ ________________________________________________________________________________
 
 <h1 align="center" id="heading"> Proxmox BS 2 Post Install </h1>
 
-This script will Disable the Enterprise Repo, Add & Enable the No-Subscription Repo and attempt the *No-Nag* fix. 
+This script will Disable the Enterprise Repo and Add & Enable the No-Subscription Repo. 
  
 Run the following in the Proxmox Web Shell. ⚠️ **PBS2 ONLY**
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pve7_post_install.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pbs_post_install.sh)"
 ```
 
 ____________________________________________________________________________________________ 
