@@ -25,7 +25,7 @@ ________________________________________________________________________________
 
 </details>
 
-details>
+<details>
 <summary markdown="span">Emby Server LXC</summary>
  
 <p align="center"><img src="https://emby.media/resources/logowhite_1881.png" height="80"/></p>
