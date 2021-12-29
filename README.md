@@ -40,7 +40,7 @@ This script will Disable the Enterprise Repo and Add & Enable the No-Subscriptio
 Run the following in the Proxmox Web Shell. ⚠️ **PBS2 ONLY**
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pbs_post_install.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pbs2_post_install.sh)"
 ```
 
 ____________________________________________________________________________________________ 
