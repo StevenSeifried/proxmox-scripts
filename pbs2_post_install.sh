@@ -23,4 +23,4 @@ EOF
 sed -i.backup -z "s/res === null || res === undefined || \!res || res\n\t\t\t.data.status.toLowerCase() \!== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 
 echo -e "\e[1;33m Finished....Please Update Proxmox \e[0m"
-systemctl restart pbsproxy.service # for the no-nag
+systemctl restart proxmox-backup-proxy.service # for the no-nag
