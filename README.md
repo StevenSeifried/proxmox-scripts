@@ -2,6 +2,9 @@
 
 Inspired by [tteck's Proxmox helper scripts](https://github.com/tteck/Proxmox)
 
+- Proxmox VE = [Proxmox Virtual Environment](https://proxmox.com/en/proxmox-ve)
+- Proxmox BS = [Proxmox Backup Server](https://proxmox.com/en/proxmox-backup-server)
+
 <details>
 <summary markdown="span">Proxmox VE 7 Post Install</summary>
  
