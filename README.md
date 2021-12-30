@@ -1,6 +1,6 @@
 ## Proxmox Scripts
 
-Inspired by [tteck's Proxmox helper scripts](https://github.com/tteck/Proxmox)
+Inspired by and based on [tteck's Proxmox helper scripts](https://github.com/tteck/Proxmox)
 
 Scripts for Proxmox VE and Proxmox BS.
 
@@ -11,14 +11,12 @@ Scripts for Proxmox VE and Proxmox BS.
 
 <details>
 <summary markdown="span">Proxmox VE 7 Post Install</summary>
- 
-<p align="center"><img src="https://www.proxmox.com/images/proxmox/Proxmox_logo_standard_hex_400px.png" alt="Proxmox Server Solutions" height="55"/></p>
 
 <h1 align="center" id="heading"> Proxmox VE 7 Post Install </h1>
 
 This script will Disable the Enterprise Repo, Add & Enable the No-Subscription Repo and attempt the *No-Nag* fix. 
  
-Run the following in the Proxmox Web Shell. ⚠️ **PVE7 ONLY**
+Run the following in the Proxmox Web Shell.
 
 ```
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pve7_post_install.sh)"
@@ -32,14 +30,12 @@ ________________________________________________________________________________
 
 <details>
 <summary markdown="span">Proxmox BS 2 Post Install</summary>
- 
-<p align="center"><img src="https://www.proxmox.com/images/proxmox/Proxmox_logo_standard_hex_400px.png" alt="Proxmox Server Solutions" height="55"/></p>
 
 <h1 align="center" id="heading"> Proxmox BS 2 Post Install </h1>
 
 This script will Disable the Enterprise Repo and Add & Enable the No-Subscription Repo. 
  
-Run the following in the Proxmox Web Shell. ⚠️ **PBS2 ONLY**
+Run the following in the Proxmox Web Shell.
 
 ```
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pbs2_post_install.sh)"
@@ -50,10 +46,59 @@ ________________________________________________________________________________
 </details>
 
 <details>
+<summary markdown="span">Home Assistant OS VM</summary> 
+ 
+<h1 align="center" id="heading"> Home Assistant OS VM </h1>
+
+To create a new Proxmox VM with the latest version of Home Assistant OS, run the following from Proxmox web shell
+
+With 32GB Storage:
+```
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/haos_vm_32gb.sh)"
+```
+
+With 64GB Storage:
+```
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/haos_vm_64gb.sh)"
+```
+
+<h3 align="center" id="heading">Default Settings:  4GB RAM - 32GB or 64GB Storage - 2vCPU</h3>
+ 
+After the script completes, If you're dissatisfied with the default settings, click on the VM, then on the **_Hardware_** tab and change the **_Memory_** and **_Processors_** settings to what you desire. Once all changes have been made, **_Start_** the VM.
+
+**Home Assistant Interface - IP:8123**
+
+____________________________________________________________________________________________ 
+ 
+</details>
+
+<details>
+<summary markdown="span">Pi-hole LXC</summary>
+ 
+<h1 align="center" id="heading"> Pi-hole LXC </h1>
+
+To create a new Proxmox Pi-hole LXC, run the following in the Proxmox web shell.
+
+```
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pihole_container.sh)"
+```
+<h3 align="center" id="heading">Default Settings:  512MiB RAM - 4GB Storage - 1vCPU</h3>
+ 
+⚙️ **To set your password:**
+ 
+Run from the LXC console
+
+```
+pihole -a -p
+```
+
+____________________________________________________________________________________________ 
+
+</details>
+
+<details>
 <summary markdown="span">Jellyfin Server LXC</summary>
  
-<p align="center"><img src="https://jellyfin.org/images/banner-dark.svg" height="80"/></p>
-
 <h1 align="center" id="heading"> Jellyfin Server LXC </h1>
 
 To create a new Proxmox Jellyfin Server LXC, run the following in the Proxmox web shell.
@@ -61,7 +106,7 @@ To create a new Proxmox Jellyfin Server LXC, run the following in the Proxmox we
 ```
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/jellyfin_container.sh)"
 ```
-<h3 align="center" id="heading">⚡ Default Settings:  2GB RAM - 8GB Storage - 2vCPU ⚡</h3>
+<h3 align="center" id="heading">Default Settings:  2GB RAM - 8GB Storage - 2vCPU</h3>
 
 After the script completes, If you're dissatisfied with the default settings, click on the LXC, then on the **_Resources_** tab and change the **_Memory_**, **_Cores_** and **_Root Disk_** (Resize disk) settings to what you desire. Changes are immediate.
 
@@ -73,8 +118,6 @@ ________________________________________________________________________________
 
 <details>
 <summary markdown="span">Emby Server LXC</summary>
- 
-<p align="center"><img src="https://emby.media/resources/logowhite_1881.png" height="80"/></p>
 
 <h1 align="center" id="heading"> Emby Server LXC </h1>
 
@@ -83,7 +126,7 @@ To create a new Proxmox Emby Server LXC, run the following in the Proxmox web sh
 ```
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/emby_container.sh)"
 ```
-<h3 align="center" id="heading">⚡ Default Settings:  2GB RAM - 8GB Storage - 2vCPU ⚡</h3>
+<h3 align="center" id="heading">Default Settings:  2GB RAM - 8GB Storage - 2vCPU</h3>
 
 After the script completes, If you're dissatisfied with the default settings, click on the LXC, then on the **_Resources_** tab and change the **_Memory_**, **_Cores_** and **_Root Disk_** (Resize disk) settings to what you desire. Changes are immediate.
 
