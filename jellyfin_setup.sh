@@ -46,11 +46,9 @@ EOF
 
 wget -q https://repo.jellyfin.org/jellyfin_team.gpg.key -O - | apt-key add - &>/dev/null
 
-echo -e "${CHECKMARK} \e[1;92m Updating Package lists... \e[0m"
-apt-get update &>/dev/null
-
 echo -e "${CHECKMARK} \e[1;92m Installing Jellyfin Server... \e[0m"
-apt-get install jellyfin &>/dev/null
+wget https://repo.jellyfin.org/releases/server/debian/versions/stable/meta/10.7.7/jellyfin_10.7.7-1_all.deb &>/dev/null
+dkpg -i jellyfin_10.7.7-1_all.deb &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Enable Jellyfin Server systemd service... \e[0m"
 systemctl enable --now jellyfin.service &>/dev/null
