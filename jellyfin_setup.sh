@@ -26,15 +26,15 @@ function msg() {
 echo -e "${CHECKMARK} \e[1;92m Setting up Container OS... \e[0m"
 sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
 locale-gen >/dev/null
-apt -y purge openssh-{client,server} >/dev/null
-apt autoremove >/dev/null
+apt-get -y purge openssh-{client,server} >/dev/null
+apt-get autoremove >/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Updating Container OS... \e[0m"
-apt update &>/dev/null
-apt -qqy upgrade &>/dev/null
+apt-get update &>/dev/null
+apt-get -qqy upgrade &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Installing Prerequisites... \e[0m"
-apt -qqy install \
+apt-get -qqy install \
     curl \
     sudo \
     apt-transport-https \
@@ -47,10 +47,10 @@ EOF
 wget -q https://repo.jellyfin.org/jellyfin_team.gpg.key -O - | apt-key add - &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Updating Package lists... \e[0m"
-apt update &>/dev/null
+apt-get update &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Installing Jellyfin Server... \e[0m"
-apt install jellyfin &>/dev/null
+apt-get install jellyfin &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Enable Jellyfin Server systemd service... \e[0m"
 systemctl enable --now jellyfin.service &>/dev/null
