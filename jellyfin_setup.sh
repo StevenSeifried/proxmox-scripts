@@ -38,20 +38,23 @@ apt-get -qqy install \
     curl \
     sudo \
     apt-transport-https \
+    at \
+    libfl2 \
     gnupg &>/dev/null
+    
+echo -e "${CHECKMARK} \e[1;92m Downloading Emby Server... \e[0m"
+wget https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.7/jellyfin-server_10.7.7-1_amd64.deb &>/dev/null
+wget https://repo.jellyfin.org/releases/server/debian/versions/stable/web/10.7.7/jellyfin-web_10.7.7-1_all.deb &>/dev/null
+
 echo -e "${CHECKMARK} \e[1;92m Adding Jellyfin Repo... \e[0m"
 cat <<EOF > /etc/apt/sources.list.d/jellyfin.list
-deb [arch=amd64] https://repo.jellyfin.org/debian bullseye main"
+deb [arch=amd64] https://repo.jellyfin.org/debian bullseye main
 EOF
 
 wget -q https://repo.jellyfin.org/jellyfin_team.gpg.key -O - | apt-key add - &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Installing Jellyfin Server... \e[0m"
-wget https://repo.jellyfin.org/releases/server/debian/versions/stable/meta/10.7.7/jellyfin_10.7.7-1_all.deb &>/dev/null
-dkpg -i jellyfin_10.7.7-1_all.deb &>/dev/null
-
-echo -e "${CHECKMARK} \e[1;92m Enable Jellyfin Server systemd service... \e[0m"
-systemctl enable --now jellyfin.service &>/dev/null
+dpkg -i jellyfin-server_10.7.7-1_amd64.deb jellyfin-web_10.7.7-1_all.deb &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Customizing Container... \e[0m"
 rm /etc/motd 
