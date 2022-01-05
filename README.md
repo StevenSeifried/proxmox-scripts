@@ -82,7 +82,7 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-
 ```
 <h3 align="center" id="heading">Default Settings:  512MiB RAM - 4GB Storage - 1vCPU</h3>
  
-⚙️ **To set your password:**
+**Change Pi-hole password:**
  
 Run from the LXC console
 
