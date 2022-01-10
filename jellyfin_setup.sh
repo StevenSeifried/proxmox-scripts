@@ -42,7 +42,7 @@ apt-get -qqy install \
     libfl2 \
     gnupg &>/dev/null
     
-echo -e "${CHECKMARK} \e[1;92m Downloading Emby Server... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Downloading Jellyfin Server... \e[0m"
 wget https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.7/jellyfin-server_10.7.7-1_amd64.deb &>/dev/null
 wget https://repo.jellyfin.org/releases/server/debian/versions/stable/web/10.7.7/jellyfin-web_10.7.7-1_all.deb &>/dev/null
 
