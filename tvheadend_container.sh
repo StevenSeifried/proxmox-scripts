@@ -151,8 +151,8 @@ pct unmount $CTID && unset MOUNT
 
 echo -e "${CHECKMARK} \e[1;92m Starting LXC Container... \e[0m"
 pct start $CTID
-pct push $CTID jellyfin_setup.sh /jellyfin_setup.sh -perms 755
-pct exec $CTID /jellyfin_setup.sh
+pct push $CTID tvheadend_setup.sh /tvheadend_setup.sh -perms 755
+pct exec $CTID /tvheadend_setup.sh
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
 info "Successfully created a Jellyfin LXC Container to $CTID at IP Address ${IP}:8096"
