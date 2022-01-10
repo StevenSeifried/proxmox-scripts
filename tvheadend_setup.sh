@@ -51,8 +51,9 @@ EOF
 wget -qO- https://doozer.io/keys/tvheadend/tvheadend/pgp | tee /etc/apt/trusted.gpg.d/tvheadend.asc &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Installing Tvheadend... \e[0m"
+export DEBIAN_FRONTEND=noninteractive
 apt-get update &>/dev/null
-apt-get -y install tvheadend &>/dev/null
+apt-get -yq install tvheadend &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Customizing Container... \e[0m"
 rm /etc/motd 
