@@ -155,5 +155,5 @@ pct push $CTID tvheadend_setup.sh /tvheadend_setup.sh -perms 755
 pct exec $CTID /tvheadend_setup.sh
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created a Jellyfin LXC Container to $CTID at IP Address ${IP}:8096"
+info "Successfully created a Tvheadend LXC Container to $CTID at IP Address ${IP}:9981"
 
