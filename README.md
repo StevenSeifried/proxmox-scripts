@@ -148,7 +148,15 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-
 
 After the script completes, If you're dissatisfied with the default settings, click on the LXC, then on the **_Resources_** tab and change the **_Memory_**, **_Cores_** and **_Root Disk_** (Resize disk) settings to what you desire. Changes are immediate.
 
-**Tvheadedn Server Interface - IP:9981**
+**You must setup Tvheadend in LXC console first**
+
+Run from the LXC console and follow the instructions:
+
+```
+dpkg-reconfigure tvheadend
+```
+
+**Tvheadend Server Interface - IP:9981**
 
 ____________________________________________________________________________________________ 
 
