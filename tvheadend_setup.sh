@@ -38,6 +38,7 @@ apt-get -qqy install \
     curl \
     sudo \
     coreutils \
+    usbutils \
     wget \
     apt-transport-https \
     lsb-release \
