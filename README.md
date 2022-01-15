@@ -157,9 +157,9 @@ ________________________________________________________________________________
 </details>
 
 <details>
-<summary markdown="span">Jellyfin Server LXC</summary>
+<summary markdown="span">jdownloader2 Server LXC</summary>
 
-<h1 align="center" id="heading"> Jellyfin Server LXC </h1>
+<h1 align="center" id="heading"> jdownloader2 Server LXC </h1>
 
 To create a new Jellyfin Server LXC, run the following in the Proxmox web shell.
 
