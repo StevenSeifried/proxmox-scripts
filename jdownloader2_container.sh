@@ -72,8 +72,7 @@ function load_module() {
 TEMP_DIR=$(mktemp -d)
 pushd $TEMP_DIR >/dev/null
 
-wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/jdownloader2/jdownloader2_setup.sh
-#wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/jdownloader2_setup.sh
+wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/jdownloader2_setup.sh
 
 load_module overlay
 
@@ -156,4 +155,3 @@ pct exec $CTID /jdownloader2_setup.sh
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
 info "Successfully created a Jellyfin LXC Container to $CTID at IP Address ${IP}"
-
