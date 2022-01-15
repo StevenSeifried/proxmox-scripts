@@ -49,11 +49,11 @@ cd /opt/jdown2
 
 echo -e "${CHECKMARK} \e[1;92m Downloading jdownloader2... \e[0m"
 sudo -u jdown2 wget http://installer.jdownloader.org/JDownloader.jar
-wget -O /etc/systemd/system/jdownloader2.service https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/jdownloader2.service
+wget -O /etc/systemd/system/jdownloader2.service https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/jdownloader2.service &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Enable and start systemd service for jdownloader2... \e[0m"
-systemctl daemon-reload
-systemctl enable --now jdownloader2
+systemctl daemon-reload  &>/dev/null
+systemctl enable jdownloader2  &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Customizing Container... \e[0m"
 rm /etc/motd 

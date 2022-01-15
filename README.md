@@ -176,6 +176,14 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-
 
 After the script completes, If you're dissatisfied with the default settings, click on the LXC, then on the **_Resources_** tab and change the **_Memory_**, **_Cores_** and **_Root Disk_** (Resize disk) settings to what you desire. Changes are immediate.
 
+**You must setup jdownloader2 in LXC console first**
+
+Run from the LXC console and follow the instructions:
+
+```
+sudo -u jdown2 java -jar /opt/jdown2/JDownloader.jar -norestart
+```
+
 ____________________________________________________________________________________________
 
 </details>
