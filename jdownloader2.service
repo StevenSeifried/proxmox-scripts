@@ -1,0 +1,14 @@
+[Unit]
+Description=jDownloader2 Java Daemon
+After=network.target
+
+[Service]
+User=jdown2
+Group=jdown2
+Type=simple
+ExecStart=/usr/bin/java -jar /opt/jdown2/JDownloader.jar -norestart
+TimeoutStopSec=20
+KillSignal=SIGABRT          
+
+[Install]
+WantedBy=multi-user.target
