@@ -151,7 +151,7 @@ pct unmount $CTID && unset MOUNT
 
 echo -e "${CHECKMARK} \e[1;92m Starting LXC Container... \e[0m"
 pct start $CTID
-pct push $CTID jdownloader2_setup.sh /jdownloder2_setup.sh -perms 755
+pct push $CTID jdownloader2_setup.sh /jdownloader2_setup.sh -perms 755
 pct exec $CTID /jdownloader2_setup.sh
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
