@@ -50,17 +50,11 @@ ________________________________________________________________________________
 
 To create a new Proxmox VM with the latest version of Home Assistant OS, run the following from Proxmox web shell
 
-With 32GB Storage:
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/haos_vm_32gb.sh)"
-```
-
-With 64GB Storage:
-```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/haos_vm_64gb.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/haos_vm.sh)"
 ```
 
-<h3 align="center" id="heading">Default Settings:  4GB RAM - 32GB or 64GB Storage - 2vCPU</h3>
+<h3 align="center" id="heading">Default Settings:  4GB RAM - 32GB Storage - 2vCPU</h3>
  
 After the script completes, If you're dissatisfied with the default settings, click on the VM, then on the **_Hardware_** tab and change the **_Memory_** and **_Processors_** settings to what you desire. Once all changes have been made, **_Start_** the VM.
 
