@@ -43,8 +43,8 @@ wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudfla
 sudo apt-get install ./cloudflared-linux-amd64.deb &>/dev/null
 sudo useradd -s /usr/sbin/nologin -r -M cloudflared &>/dev/null
 
-$CLOUDFLARED_CONF="/etc/default/cloudflared"
-$CLOUDFLARED_SERVICE="/etc/systemd/system/cloudflared.service"
+CLOUDFLARED_CONF="/etc/default/cloudflared"
+CLOUDFLARED_SERVICE="/etc/systemd/system/cloudflared.service"
 
 cat << EOF > $CLOUDFLARED_CONF
 # Commandline args for cloudflared, using Cloudflare DNS
