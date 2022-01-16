@@ -39,9 +39,9 @@ apt-get -qqy install \
     sudo &>/dev/null
 
 msg "Installing cloudflared.."
-wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-sudo apt-get install ./cloudflared-linux-amd64.deb
-sudo useradd -s /usr/sbin/nologin -r -M cloudflared
+wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb &>/dev/null
+sudo apt-get install ./cloudflared-linux-amd64.deb &>/dev/null
+sudo useradd -s /usr/sbin/nologin -r -M cloudflared &>/dev/null
 
 $CLOUDFLARED_CONF="/etc/default/cloudflared"
 $CLOUDFLARED_SERVICE="/etc/systemd/system/cloudflared.service"
@@ -53,7 +53,6 @@ EOF
 
 chown cloudflared:cloudflared /etc/default/cloudflared
 chown cloudflared:cloudflared /usr/local/bin/cloudflared
-systemctl daemon-reload
 
 cat << EOF > $CLOUDFLARED_SERVICE
 [Unit]
@@ -72,6 +71,8 @@ KillMode=process
 [Install]
 WantedBy=multi-user.target
 EOF
+
+systemctl daemon-reload
 
 msg "Installing Pi-hole.."
 curl -sSL https://install.pi-hole.net | bash
