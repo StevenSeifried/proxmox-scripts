@@ -44,8 +44,6 @@ sudo apt-get install ./cloudflared-linux-amd64.deb &>/dev/null
 sudo useradd -s /usr/sbin/nologin -r -M cloudflared &>/dev/null
 
 CLOUDFLARED_CONF="/etc/default/cloudflared"
-CLOUDFLARED_SERVICE="/etc/systemd/system/cloudflared.service"
-
 cat << EOF > $CLOUDFLARED_CONF
 # Commandline args for cloudflared, using Cloudflare DNS
 CLOUDFLARED_OPTS=--port 5053 --upstream https://1.1.1.1/dns-query --upstream https://1.0.0.1/dns-query
@@ -54,6 +52,7 @@ EOF
 chown cloudflared:cloudflared /etc/default/cloudflared
 chown cloudflared:cloudflared /usr/local/bin/cloudflared
 
+CLOUDFLARED_SERVICE="/etc/systemd/system/cloudflared.service"
 cat << EOF > $CLOUDFLARED_SERVICE
 [Unit]
 Description=cloudflared DNS over HTTPS proxy
