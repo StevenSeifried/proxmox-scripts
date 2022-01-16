@@ -74,7 +74,7 @@ To create a new Proxmox Pi-hole LXC, run the following in the Proxmox web shell.
 ```
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pihole_container.sh)"
 ```
-<h3 align="center" id="heading">Default Settings:  512MiB RAM - 4GB Storage - 1vCPU</h3>
+<h3 align="center" id="heading">Default Settings: 512MiB RAM - 4GB Storage - 1vCPU</h3>
  
 **Change Pi-hole password:**
  
@@ -83,6 +83,34 @@ Run from the LXC console
 ```
 pihole -a -p
 ```
+
+____________________________________________________________________________________________ 
+
+</details>
+
+<details>
+<summary markdown="span">Pi-hole with cloudflared LXC</summary>
+ 
+<h1 align="center" id="heading"> Pi-hole with cloudflared LXC </h1>
+
+**Please note:** I don't want discussions about cloudflared in the Issues.
+
+To create a new Proxmox Pi-hole with cloudflared LXC, run the following in the Proxmox web shell.
+
+```
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pihole_cloudflared_container.sh)"
+```
+<h3 align="center" id="heading">Default Settings: 1024MiB RAM - 4GB Storage - 1vCPU</h3>
+ 
+**Change Pi-hole password:**
+ 
+Run from the LXC console
+
+```
+pihole -a -p
+```
+
+You must configure Pi-hole to use the local cloudflared service as the upstream DNS server by specifying "127.0.0.1#5053" as the "Custom DNS 1 (IPv4)". 
 
 ____________________________________________________________________________________________ 
 
