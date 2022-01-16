@@ -42,6 +42,7 @@ msg "Installing cloudflared.."
 wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb &>/dev/null
 sudo apt-get install ./cloudflared-linux-amd64.deb &>/dev/null
 sudo useradd -s /usr/sbin/nologin -r -M cloudflared &>/dev/null
+rm cloudflared-linux-amd64.deb
 
 CLOUDFLARED_CONF="/etc/default/cloudflared"
 cat << EOF > $CLOUDFLARED_CONF
