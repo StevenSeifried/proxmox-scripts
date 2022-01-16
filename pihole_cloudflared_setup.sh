@@ -52,24 +52,7 @@ EOF
 chown cloudflared:cloudflared /etc/default/cloudflared
 chown cloudflared:cloudflared /usr/local/bin/cloudflared
 
-CLOUDFLARED_SERVICE="/etc/systemd/system/cloudflared.service"
-cat << EOF > $CLOUDFLARED_SERVICE
-[Unit]
-Description=cloudflared DNS over HTTPS proxy
-After=syslog.target network-online.target
-
-[Service]
-Type=simple
-User=cloudflared
-EnvironmentFile=/etc/default/cloudflared
-ExecStart=/usr/local/bin/cloudflared proxy-dns $CLOUDFLARED_OPTS
-Restart=on-failure
-RestartSec=10
-KillMode=process
-
-[Install]
-WantedBy=multi-user.target
-EOF
+wget -O /etc/systemd/system/cloudflared.service https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/cloudflared.service &>/dev/null
 
 systemctl daemon-reload
 
