@@ -92,7 +92,8 @@ ________________________________________________________________________________
 <summary markdown="span">Pi-hole with cloudflared LXC</summary>
  
 <h1 align="center" id="heading"> Pi-hole with cloudflared LXC </h1>
-**Please note:** I don't want discussions about cloudflared in the Issues.
+**Please note:** 
+I don't want discussions about cloudflared in the Issues.
 
 To create a new Proxmox Pi-hole with cloudflared LXC, run the following in the Proxmox web shell.
 
