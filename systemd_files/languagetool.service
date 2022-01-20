@@ -1,0 +1,16 @@
+[Unit]
+Description=LanguageTool
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=languagetool
+Group=nogroup
+WorkingDirectory=/opt/LanguageTool
+ExecStart=/usr/bin/java -cp /opt/LanguageTool/languagetool-server.jar org.languagetool.server.HTTPServer --config languagetool.cfg --port 8081 --allow-origin "*" --public
+Restart=always
+#Environment=USER= HOME=/opt/LanguageTool
+
+[Install]
+WantedBy=multi-user.target
