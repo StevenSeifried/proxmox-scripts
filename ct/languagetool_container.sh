@@ -154,4 +154,4 @@ pct push $CTID languagetool_setup.sh /languagetool_setup.sh -perms 755
 pct exec $CTID /languagetool_setup.sh
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created a LanguageTool LXC Container to $CTID at IP Address ${IP}"
+info "Successfully created a LanguageTool LXC Container to $CTID at IP Address ${IP}:8081/v2"
