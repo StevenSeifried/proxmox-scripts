@@ -17,7 +17,7 @@ This script will Disable the Enterprise Repo, Add & Enable the No-Subscription R
 Run the following in the Proxmox Web Shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pve7_post_install.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/other/pve7_post_install.sh)"
 ```
 
 It's recommended to update Proxmox **after** running this script, **before** adding any VM/CT.
@@ -36,7 +36,7 @@ This script will Disable the Enterprise Repo and Add & Enable the No-Subscriptio
 Run the following in the Proxmox Web Shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pbs2_post_install.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/other/pbs2_post_install.sh)"
 ```
 
 ____________________________________________________________________________________________ 
@@ -51,7 +51,7 @@ ________________________________________________________________________________
 To create a new Proxmox VM with the latest version of Home Assistant OS, run the following from Proxmox web shell
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/haos_vm.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/vm/haos_vm.sh)"
 ```
 
 <h3 align="center" id="heading">Default Settings:  4GB RAM - 32GB Storage - 2vCPU</h3>
@@ -72,7 +72,7 @@ ________________________________________________________________________________
 To create a new Proxmox Pi-hole LXC, run the following in the Proxmox web shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pihole_container.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/ct/pihole_container.sh)"
 ```
 <h3 align="center" id="heading">Default Settings: 512MiB RAM - 4GB Storage - 1vCPU</h3>
  
@@ -98,7 +98,7 @@ ________________________________________________________________________________
 To create a new Proxmox Pi-hole with cloudflared LXC, run the following in the Proxmox web shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pihole_cloudflared_container.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/ct/pihole_cloudflared_container.sh)"
 ```
 <h3 align="center" id="heading">Default Settings: 1024MiB RAM - 4GB Storage - 1vCPU</h3>
  
@@ -124,7 +124,7 @@ ________________________________________________________________________________
 To create a new Emby Server LXC, run the following in the Proxmox web shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/emby_container.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/ct/emby_container.sh)"
 ```
 <h3 align="center" id="heading">Default Settings:  2GB RAM - 8GB Storage - 2vCPU</h3>
 
@@ -144,7 +144,7 @@ ________________________________________________________________________________
 To create a new Jellyfin Server LXC, run the following in the Proxmox web shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/jellyfin_container.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/ct/jellyfin_container.sh)"
 ```
 <h3 align="center" id="heading">Default Settings:  2GB RAM - 8GB Storage - 2vCPU</h3>
 
@@ -164,7 +164,7 @@ ________________________________________________________________________________
 To create a new Tvheadend Server LXC, run the following in the Proxmox web shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/tvheadend_container.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/ct/tvheadend_container.sh)"
 ```
 <h3 align="center" id="heading">Default Settings:  2GB RAM - 8GB Storage - 2vCPU</h3>
 
@@ -192,7 +192,7 @@ ________________________________________________________________________________
 To create a new Jellyfin Server LXC, run the following in the Proxmox web shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/jdownloader2_container.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/ct/jdownloader2_container.sh)"
 ```
 <h3 align="center" id="heading">Default Settings:  2GB RAM - 32GB Storage - 2vCPU</h3>
 

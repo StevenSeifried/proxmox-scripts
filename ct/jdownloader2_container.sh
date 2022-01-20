@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 while true; do
-    read -p "This will create a new Jellyfin LXC Container. Proceed (y/n)?" yn
+    read -p "This will create a new jdownloader2 LXC Container. Proceed (y/n)?" yn
     case $yn in
         [Yy]* ) break;;
         [Nn]* ) exit;;
@@ -72,7 +72,7 @@ function load_module() {
 TEMP_DIR=$(mktemp -d)
 pushd $TEMP_DIR >/dev/null
 
-wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/jellyfin_setup.sh
+wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/setup_files/jdownloader2_setup.sh
 
 load_module overlay
 
@@ -130,7 +130,7 @@ DISK=${DISK_PREFIX:-vm}-${CTID}-disk-0${DISK_EXT-}
 ROOTFS=${STORAGE}:${DISK_REF-}${DISK}
 
 echo -e "${CHECKMARK} \e[1;92m Creating LXC Container... \e[0m"
-DISK_SIZE=8G
+DISK_SIZE=32G
 pvesm alloc $STORAGE $CTID $DISK $DISK_SIZE --format ${DISK_FORMAT:-raw} >/dev/null
 if [ "$STORAGE_TYPE" == "zfspool" ]; then
   warn "Some containers may not work properly due to ZFS not supporting 'fallocate'."
@@ -138,10 +138,10 @@ else
   mkfs.ext4 $(pvesm path $ROOTFS) &>/dev/null
 fi
 ARCH=$(dpkg --print-architecture)
-HOSTNAME=jellyfin
+HOSTNAME=jdownloader2
 TEMPLATE_STRING="local:vztmpl/${TEMPLATE}"
 pct create $CTID $TEMPLATE_STRING -arch $ARCH -features nesting=1 \
-  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=dhcp -onboot 1 -cores 2 -memory 2048\
+  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=dhcp -onboot 1 -cores 2 -memory 1024\
   -ostype $OSTYPE -rootfs $ROOTFS,size=$DISK_SIZE -storage $STORAGE >/dev/null
 
 MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
@@ -150,9 +150,8 @@ pct unmount $CTID && unset MOUNT
 
 echo -e "${CHECKMARK} \e[1;92m Starting LXC Container... \e[0m"
 pct start $CTID
-pct push $CTID jellyfin_setup.sh /jellyfin_setup.sh -perms 755
-pct exec $CTID /jellyfin_setup.sh
+pct push $CTID jdownloader2_setup.sh /jdownloader2_setup.sh -perms 755
+pct exec $CTID /jdownloader2_setup.sh
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created a Jellyfin LXC Container to $CTID at IP Address ${IP}:8096"
-
+info "Successfully created a Jellyfin LXC Container to $CTID at IP Address ${IP}"

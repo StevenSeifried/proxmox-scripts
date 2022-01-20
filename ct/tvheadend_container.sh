@@ -72,8 +72,7 @@ function load_module() {
 TEMP_DIR=$(mktemp -d)
 pushd $TEMP_DIR >/dev/null
 
-wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/tvheadend/tvheadend_setup.sh
-#wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/tvheadend_setup.sh
+wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/setup_files/tvheadend_setup.sh
 
 load_module overlay
 

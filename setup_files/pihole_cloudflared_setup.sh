@@ -53,7 +53,7 @@ EOF
 chown cloudflared:cloudflared /etc/default/cloudflared
 chown cloudflared:cloudflared /usr/local/bin/cloudflared
 
-wget -O /etc/systemd/system/cloudflared.service https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/cloudflared.service &>/dev/null
+wget -O /etc/systemd/system/cloudflared.service https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/systemd_files/cloudflared.service &>/dev/null
 
 systemctl daemon-reload
 

@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
 while true; do
-    read -p "This will create a new Pi-hole LXC. Proceed (y/n)?" yn
+    read -p "This will create a new Emby Server LXC Container. Proceed (y/n)?" yn
     case $yn in
         [Yy]* ) break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
 done
-
 set -o errexit  
-set -o errtrace 
+set -o errtrace
 set -o nounset  
 set -o pipefail 
 shopt -s expand_aliases
 alias die='EXIT=$? LINE=$LINENO error_exit'
 trap die ERR
+CHECKMARK='\033[0;32m\xE2\x9C\x94\033[0m'
 trap cleanup EXIT
 
 function error_exit() {
@@ -72,7 +72,7 @@ function load_module() {
 TEMP_DIR=$(mktemp -d)
 pushd $TEMP_DIR >/dev/null
 
-wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/pihole_setup.sh
+wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/setup_files/emby_setup.sh
 
 load_module overlay
 
@@ -100,14 +100,14 @@ else
     "${STORAGE_MENU[@]}" 3>&1 1>&2 2>&3) || exit
   done
 fi
-info "Using '$STORAGE' for storage location."
+info "Using '$STORAGE' for Storage Location."
 
 CTID=$(pvesh get /cluster/nextid)
-info "LXC ID is $CTID."
+info "Container ID is $CTID."
 
-msg "Updating LXC template list..."
+echo -e "${CHECKMARK} \e[1;92m Updating LXC Template List... \e[0m"
 pveam update >/dev/null
-msg "Downloading LXC template..."
+echo -e "${CHECKMARK} \e[1;92m Downloading LXC Template... \e[0m"
 OSTYPE=debian
 OSVERSION=${OSTYPE}-11
 mapfile -t TEMPLATES < <(pveam available -section system | sed -n "s/.*\($OSVERSION.*\)/\1/p" | sort -t - -k 2 -V)
@@ -129,8 +129,8 @@ esac
 DISK=${DISK_PREFIX:-vm}-${CTID}-disk-0${DISK_EXT-}
 ROOTFS=${STORAGE}:${DISK_REF-}${DISK}
 
-msg "Creating LXC..."
-DISK_SIZE=4G
+echo -e "${CHECKMARK} \e[1;92m Creating LXC Container... \e[0m"
+DISK_SIZE=8G
 pvesm alloc $STORAGE $CTID $DISK $DISK_SIZE --format ${DISK_FORMAT:-raw} >/dev/null
 if [ "$STORAGE_TYPE" == "zfspool" ]; then
   warn "Some containers may not work properly due to ZFS not supporting 'fallocate'."
@@ -138,20 +138,21 @@ else
   mkfs.ext4 $(pvesm path $ROOTFS) &>/dev/null
 fi
 ARCH=$(dpkg --print-architecture)
-HOSTNAME=pi-hole
+HOSTNAME=emby
 TEMPLATE_STRING="local:vztmpl/${TEMPLATE}"
 pct create $CTID $TEMPLATE_STRING -arch $ARCH -features nesting=1 \
-  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=dhcp -onboot 1 -cores 1 -memory 512 \
+  -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=dhcp -onboot 1 -cores 2 -memory 2048\
   -ostype $OSTYPE -rootfs $ROOTFS,size=$DISK_SIZE -storage $STORAGE >/dev/null
 
 MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
 ln -fs $(readlink /etc/localtime) ${MOUNT}/etc/localtime
 pct unmount $CTID && unset MOUNT
 
-msg "Starting LXC..."
+echo -e "${CHECKMARK} \e[1;92m Starting LXC Container... \e[0m"
 pct start $CTID
-pct push $CTID pihole_setup.sh /pihole_setup.sh -perms 755
-pct exec $CTID /pihole_setup.sh
+pct push $CTID emby_setup.sh /emby_setup.sh -perms 755
+pct exec $CTID /emby_setup.sh
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created a Pi-hole LXC to $CTID at IP Address ${IP}"
+info "Successfully created a Emby Server LXC Container to $CTID at IP Address ${IP}:8096"
+
