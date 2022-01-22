@@ -51,9 +51,13 @@ echo -e "${CHECKMARK} \e[1;92m Downloading jdownloader2... \e[0m"
 sudo -u jdown2 wget http://installer.jdownloader.org/JDownloader.jar
 wget -O /etc/systemd/system/jdownloader2.service https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/systemd_files/jdownloader2.service &>/dev/null
 
-echo -e "${CHECKMARK} \e[1;92m Enable and start systemd service for jdownloader2... \e[0m"
+echo -e "${CHECKMARK} \e[1;92m Enable systemd service for jdownloader2... \e[0m"
 systemctl daemon-reload  &>/dev/null
 systemctl enable jdownloader2  &>/dev/null
+
+echo -e "${CHECKMARK} \e[1;92m Setup NFS share for the jdownloader2 Downloads folder... \e[0m"
+wget -O /etc/exports https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/config_files/exports &>/dev/null
+systemctl restart nfs-kernel-server
 
 echo -e "${CHECKMARK} \e[1;92m Customizing Container... \e[0m"
 rm /etc/motd 
