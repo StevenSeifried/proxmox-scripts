@@ -211,7 +211,7 @@ ________________________________________________________________________________
 </details>
 
 <details>
-<summary markdown="span">Language Server LXC</summary>
+<summary markdown="span">LanguageTool Server LXC</summary>
 
 <h1 align="center" id="heading"> LanguageTool Server LXC </h1>
 
