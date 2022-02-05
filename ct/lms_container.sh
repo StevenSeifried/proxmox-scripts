@@ -155,5 +155,4 @@ pct push $CTID lms_setup.sh /lms_setup.sh -perms 755
 pct exec $CTID /lms_setup.sh
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created a Logitech Media Server LXC Container to $CTID at IP Address ${IP}:8096"
-printf "The Logitech Media Server webinterface is reachable by going to the following URL:\n http://${IP}:3000"
+printf "The Logitech Media Server webinterface is reachable by going to the following URL:\n http://${IP}:9000\n"
