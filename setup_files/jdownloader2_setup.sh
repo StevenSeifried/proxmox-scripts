@@ -58,7 +58,7 @@ systemctl enable jdownloader2  &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Setup NFS share for the jdownloader2 Downloads folder... \e[0m"
 wget -O /etc/exports https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/config_files/exports &>/dev/null
-systemctl restart nfs-kernel-server
+systemctl restart nfs-kernel-server &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Customizing Container... \e[0m"
 rm /etc/motd 
