@@ -61,7 +61,7 @@ wget -O /etc/exports https://raw.githubusercontent.com/StevenSeifried/proxmox-sc
 systemctl restart nfs-kernel-server &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Disable NFS server... \e[0m"
-systemctl disable --now nfs-kernel-server
+systemctl disable --now nfs-kernel-server &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Customizing Container... \e[0m"
 rm /etc/motd 
