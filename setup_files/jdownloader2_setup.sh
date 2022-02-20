@@ -44,7 +44,7 @@ useradd -s /sbin/nologin jdown2
 
 echo -e "${CHECKMARK} \e[1;92m Create folder for jdownloader2... \e[0m"
 mkdir /opt/jdown2
-chown jdown2. /opt/jdown2
+chown jdown2 /opt/jdown2
 cd /opt/jdown2
 
 echo -e "${CHECKMARK} \e[1;92m Downloading jdownloader2... \e[0m"
@@ -55,9 +55,12 @@ echo -e "${CHECKMARK} \e[1;92m Enable systemd service for jdownloader2... \e[0m"
 systemctl daemon-reload  &>/dev/null
 systemctl enable jdownloader2  &>/dev/null
 
-echo -e "${CHECKMARK} \e[1;92m Setup NFS share for the jdownloader2 Downloads folder... \e[0m"
-wget -O /etc/exports https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/config_files/exports &>/dev/null
-systemctl restart nfs-kernel-server
+#echo -e "${CHECKMARK} \e[1;92m Setup NFS share for the jdownloader2 Downloads folder... \e[0m"
+#wget -O /etc/exports https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/config_files/exports &>/dev/null
+#systemctl restart nfs-kernel-server &>/dev/null
+
+#echo -e "${CHECKMARK} \e[1;92m Disable NFS server... \e[0m"
+#systemctl disable --now nfs-kernel-server &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Customizing Container... \e[0m"
 rm /etc/motd 
