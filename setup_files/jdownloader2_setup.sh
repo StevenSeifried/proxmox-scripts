@@ -37,7 +37,8 @@ echo -e "${CHECKMARK} \e[1;92m Installing Prerequisites... \e[0m"
 apt-get -qqy install \
     wget \
     sudo \
-    openjdk-11-jre-headless &>/dev/null
+    openjdk-11-jre-headless 
+    nfs-kernel-server &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Create user for jdownloader2... \e[0m"
 useradd -s /sbin/nologin jdown2
