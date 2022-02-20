@@ -154,4 +154,4 @@ pct push $CTID jdownloader2_setup.sh /jdownloader2_setup.sh -perms 755
 pct exec $CTID /jdownloader2_setup.sh
 
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created a Jellyfin LXC Container to $CTID at IP Address ${IP}"
+info "Successfully created a jdownloader2 LXC Container to $CTID at IP Address ${IP}"
