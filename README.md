@@ -206,14 +206,6 @@ Run from the LXC console and follow the instructions:
 sudo -u jdown2 java -jar /opt/jdown2/JDownloader.jar -norestart
 ```
 
-**Enable NFS share**
-
-Run from the LXC console and follow the instructions:
-
-```
-systemctl enable --now nfs-kernel-server
-```
-
 ____________________________________________________________________________________________
 
 </details>
