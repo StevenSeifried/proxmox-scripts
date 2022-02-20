@@ -60,6 +60,9 @@ echo -e "${CHECKMARK} \e[1;92m Setup NFS share for the jdownloader2 Downloads fo
 wget -O /etc/exports https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/config_files/exports &>/dev/null
 systemctl restart nfs-kernel-server &>/dev/null
 
+echo -e "${CHECKMARK} \e[1;92m Disable NFS server... \e[0m"
+systemctl disable --now nfs-kernel-server
+
 echo -e "${CHECKMARK} \e[1;92m Customizing Container... \e[0m"
 rm /etc/motd 
 rm /etc/update-motd.d/10-uname 
