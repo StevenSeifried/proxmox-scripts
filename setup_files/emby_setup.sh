@@ -43,11 +43,11 @@ apt-get -qqy install \
     ocl-icd-libopencl1 \
     beignet-opencl-icd &>/dev/null
 
-echo -e "${CHECKMARK} \e[1;92m Configure Hardware Acceleration... \e[0m"
+#echo -e "${CHECKMARK} \e[1;92m Configure Hardware Acceleration... \e[0m"
 
-/bin/chgrp video /dev/dri
-/bin/chmod 755 /dev/dri
-/bin/chmod 660 /dev/dri/*
+# /bin/chgrp video /dev/dri
+# /bin/chmod 755 /dev/dri
+# /bin/chmod 660 /dev/dri/*
     
 echo -e "${CHECKMARK} \e[1;92m Downloading Emby Server... \e[0m"
 wget https://github.com/MediaBrowser/Emby.Releases/releases/download/4.6.7.0/emby-server-deb_4.6.7.0_amd64.deb &>/dev/null

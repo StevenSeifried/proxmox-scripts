@@ -45,11 +45,11 @@ apt-get -qqy install \
     ocl-icd-libopencl1 \
     beignet-opencl-icd &>/dev/null
 
-echo -e "${CHECKMARK} \e[1;92m Configure Hardware Acceleration... \e[0m"
+#echo -e "${CHECKMARK} \e[1;92m Configure Hardware Acceleration... \e[0m"
 
-/bin/chgrp video /dev/dri
-/bin/chmod 755 /dev/dri
-/bin/chmod 660 /dev/dri/*
+# /bin/chgrp video /dev/dri
+# /bin/chmod 755 /dev/dri
+# /bin/chmod 660 /dev/dri/*
     
 echo -e "${CHECKMARK} \e[1;92m Downloading Jellyfin Server... \e[0m"
 wget https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.7/jellyfin-server_10.7.7-1_amd64.deb &>/dev/null
