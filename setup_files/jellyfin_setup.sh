@@ -65,6 +65,11 @@ wget -q https://repo.jellyfin.org/jellyfin_team.gpg.key -O - | apt-key add - &>/
 echo -e "${CHECKMARK} \e[1;92m Installing Jellyfin Server... \e[0m"
 dpkg -i jellyfin-server_10.7.7-1_amd64.deb jellyfin-web_10.7.7-1_all.deb &>/dev/null
 
+mkdir -p /var/cache/jellyfin
+mkdir -p /var/log/jellyfin
+chown -R jellyfin:jellyfin /var/cache/jellyfin
+chown -R jellyfin:jellyfin /var/log/jellyfin
+
 echo -e "${CHECKMARK} \e[1;92m Customizing Container... \e[0m"
 rm /etc/motd 
 rm /etc/update-motd.d/10-uname 
