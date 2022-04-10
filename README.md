@@ -44,6 +44,25 @@ ________________________________________________________________________________
 </details>
 
 <details>
+<summary markdown="span"> Proxmox CPU Scaling Governor</summary>
+
+<h1 align="center" id="heading">Proxmox CPU Scaling Governor </h1>
+
+You can change the CPU Scaling Governor to save power or improve performance.
+
+[Generic Scaling Governors](https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html?#generic-scaling-governors)
+ 
+Run the following in the Proxmox Shell.
+
+```
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/other/set_cpu_governor.sh)"
+```
+
+____________________________________________________________________________________________ 
+
+</details>
+
+<details>
 <summary markdown="span">Home Assistant OS VM</summary> 
  
 <h1 align="center" id="heading"> Home Assistant OS VM </h1>
