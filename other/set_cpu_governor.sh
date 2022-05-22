@@ -71,9 +71,12 @@ while [ $opt != '' ]
             clear
             show_menu
         ;;
-        7)exit;
+        7)  clear
+            exit
         ;;
-        x)exit;
+        x)
+            clear
+            exit
         ;;
         \n)exit;
         ;;
