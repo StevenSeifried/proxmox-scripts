@@ -52,18 +52,18 @@ apt-get -qqy install \
 # /bin/chmod 660 /dev/dri/*
     
 echo -e "${CHECKMARK} \e[1;92m Downloading Jellyfin Server... \e[0m"
-wget https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.7.7/jellyfin-server_10.7.7-1_amd64.deb &>/dev/null
-wget https://repo.jellyfin.org/releases/server/debian/versions/stable/web/10.7.7/jellyfin-web_10.7.7-1_all.deb &>/dev/null
+wget https://repo.jellyfin.org/releases/server/debian/versions/stable/server/10.8.0/jellyfin-server_10.8.0-1_amd64.deb &>/dev/null
+wget https://repo.jellyfin.org/releases/server/debian/versions/stable/web/10.8.0/jellyfin-web_10.8.0-1_all.deb &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Adding Jellyfin Repo... \e[0m"
 cat <<EOF > /etc/apt/sources.list.d/jellyfin.list
 deb [arch=amd64] https://repo.jellyfin.org/debian bullseye main
 EOF
 
-wget -q https://repo.jellyfin.org/jellyfin_team.gpg.key -O - | apt-key add - &>/dev/null
+curl -fsSL https://repo.jellyfin.org/debian/jellyfin_team.gpg.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/debian-jellyfin.gpg &>/dev/null
 
 echo -e "${CHECKMARK} \e[1;92m Installing Jellyfin Server... \e[0m"
-dpkg -i jellyfin-server_10.7.7-1_amd64.deb jellyfin-web_10.7.7-1_all.deb &>/dev/null
+dpkg -i jellyfin-server_10.8.0-1_amd64.deb jellyfin-web_10.8.0-1_all.deb &>/dev/null
 
 mkdir -p /var/cache/jellyfin
 mkdir -p /var/log/jellyfin
