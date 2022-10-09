@@ -99,7 +99,6 @@ Group=snowflake
 [Install]
 WantedBy=multi-user.target
 EOF
-ln -s /usr/share/jellyfin/web/ /usr/lib/jellyfin/bin/jellyfin-web
 msg_ok "Created Service"
 
 PASS=$(grep -w "root" /etc/shadow | cut -b6);
