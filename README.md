@@ -272,10 +272,10 @@ ________________________________________________________________________________
 
 <h1 align="center" id="heading"> Tor Snowflake Server LXC </h1>
 
-To create a new Tor Snowflake LXC, run the following in the Proxmox web shell.
+To create a Tor Snowflake LXC, run the following in the Proxmox web shell.
 
 ```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/ct/languagetool_container.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/ct/snowflake_container.sh)"
 ```
 <h3 align="center" id="heading">Default Settings:  512MB RAM - 4GB Storage - 1vCPU</h3>
 
