@@ -69,6 +69,24 @@ apt-get update &>/dev/null
 apt-get -y upgrade &>/dev/null
 msg_ok "Updated Container OS"
 
+PASS=$(grep -w "root" /etc/shadow | cut -b6);
+  if [[ $PASS != $ ]]; then
+msg_info "Customizing Container"
+rm /etc/motd
+rm /etc/update-motd.d/10-uname
+touch ~/.hushlogin
+GETTY_OVERRIDE="/etc/systemd/system/container-getty@1.service.d/override.conf"
+mkdir -p $(dirname $GETTY_OVERRIDE)
+cat << EOF > $GETTY_OVERRIDE
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --autologin root --noclear --keep-baud tty%I 115200,38400,9600 \$TERM
+EOF
+systemctl daemon-reload
+systemctl restart $(basename $(dirname $GETTY_OVERRIDE) | sed 's/\.d//')
+
+msg_ok "Customized Container"
+
 msg_info "Installing Dependencies"
 apt-get install -y wget git golang &>/dev/null
 msg_ok "Installed Dependencies"
@@ -105,22 +123,6 @@ msg_info "Enable and start Service"
 systemctl daemon-reload
 systemctl enable --now snowflake.service
 msg_ok "Enabled and started Service"
-
-PASS=$(grep -w "root" /etc/shadow | cut -b6);
-  if [[ $PASS != $ ]]; then
-msg_info "Customizing Container"
-rm /etc/motd
-rm /etc/update-motd.d/10-uname
-touch ~/.hushlogin
-GETTY_OVERRIDE="/etc/systemd/system/container-getty@1.service.d/override.conf"
-mkdir -p $(dirname $GETTY_OVERRIDE)
-cat << EOF > $GETTY_OVERRIDE
-[Service]
-ExecStart=
-ExecStart=-/sbin/agetty --autologin root --noclear --keep-baud tty%I 115200,38400,9600 \$TERM
-EOF
-systemctl daemon-reload
-systemctl restart $(basename $(dirname $GETTY_OVERRIDE) | sed 's/\.d//')
 
 msg_ok "Customized Container"
 msg_info "Cleaning up"
