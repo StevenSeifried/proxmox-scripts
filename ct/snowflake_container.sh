@@ -42,13 +42,6 @@ else
     echo -e "⚠ User exited script \n"
     exit
 fi
-function header_info {
-echo -e "${RD}
-|_   _|___ ___   |   __|___ ___ _ _ _|  _| |___| |_ ___ 
-  | | | . |  _|  |__   |   | . | | | |  _| | .'| '_| -_|
-  |_| |___|_|    |_____|_|_|___|_____|_| |_|__,|_,_|___|
-${CL}"
-}
 function msg_info() {
     local msg="$1"
     echo -ne " ${HOLD} ${YW}${msg}..."
@@ -189,18 +182,15 @@ if (whiptail --title "ADVANCED SETTINGS COMPLETE" --yesno "Ready to create ${APP
     echo -e "${RD}Creating a ${APP} LXC using the above advanced settings${CL}"
 else
   clear
-  header_info
   echo -e "${RD}Using Advanced Settings${CL}"
   advanced_settings
 fi
 }
 function start_script() {
 if (whiptail --title "SETTINGS" --yesno "Use Default Settings?" --no-button Advanced 10 58); then
-  header_info
   echo -e "${BL}Using Default Settings${CL}"
   default_settings
 else
-  header_info
   echo -e "${RD}Using Advanced Settings${CL}"
   advanced_settings
 fi
