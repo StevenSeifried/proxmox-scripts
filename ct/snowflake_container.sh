@@ -42,6 +42,13 @@ else
     echo -e "⚠ User exited script \n"
     exit
 fi
+function header_info {
+echo -e "${RD}
+|_   _|___ ___   |   __|___ ___ _ _ _|  _| |___| |_ ___ 
+  | | | . |  _|  |__   |   | . | | | |  _| | .'| '_| -_|
+  |_| |___|_|    |_____|_|_|___|_____|_| |_|__,|_,_|___|
+${CL}"
+}
 function msg_info() {
     local msg="$1"
     echo -ne " ${HOLD} ${YW}${msg}..."
