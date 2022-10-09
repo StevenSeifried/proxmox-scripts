@@ -222,6 +222,6 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/$GITREPO/main/ct/create
 msg_info "Starting LXC Container"
 pct start $CTID
 msg_ok "Started LXC Container"
-lxc-attach -n $CTID -- bash -c "$(wget -qLO - https://raw.githubusercontent.com/$GITREPO/main/setup/$var_install.sh)" || exit
+lxc-attach -n $CTID -- bash -c "$(wget -qLO - https://raw.githubusercontent.com/$GITREPO/main/setup_files/$var_install.sh)" || exit
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
 msg_ok "Completed Successfully!\n"
