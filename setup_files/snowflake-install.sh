@@ -75,7 +75,7 @@ msg_ok "Installed Dependencies"
 
 msg_info "Install Snowflake"
 useradd -rm snowflake
-su snowflake -c "cd /home/snowflake && git clone https://git.torproject.org/pluggable-transports/snowflake.git && cd /home/snowflake/snowflake && go build"
+su snowflake -c "cd /home/snowflake && git clone https://git.torproject.org/pluggable-transports/snowflake.git && cd /home/snowflake/snowflake/proxy && go build"
 wget https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/systemd_files/snowflake.service -O /etc/systemd/system/snowflake.service
 chmod 644 /etc/systemd/system/snowflake.service
 systemctl daemon-reload
