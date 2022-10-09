@@ -101,6 +101,11 @@ WantedBy=multi-user.target
 EOF
 msg_ok "Created Service"
 
+msg_info "Enable and start Service"
+systemctl daemon-reload
+systemctl enable --now snowflake.service
+msg_ok "Enabled and started Service"
+
 PASS=$(grep -w "root" /etc/shadow | cut -b6);
   if [[ $PASS != $ ]]; then
 msg_info "Customizing Container"
@@ -116,7 +121,6 @@ ExecStart=-/sbin/agetty --autologin root --noclear --keep-baud tty%I 115200,3840
 EOF
 systemctl daemon-reload
 systemctl restart $(basename $(dirname $GETTY_OVERRIDE) | sed 's/\.d//')
-systemctl enable --now snowflake.service
 
 msg_ok "Customized Container"
 msg_info "Cleaning up"
