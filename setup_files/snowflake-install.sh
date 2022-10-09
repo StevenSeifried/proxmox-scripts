@@ -76,11 +76,31 @@ msg_ok "Installed Dependencies"
 msg_info "Install Snowflake"
 useradd -rm snowflake
 su snowflake -c "cd /home/snowflake && git clone https://git.torproject.org/pluggable-transports/snowflake.git && cd /home/snowflake/snowflake/proxy && go build"
-wget https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/systemd_files/snowflake.service -O /etc/systemd/system/snowflake.service
-chmod 644 /etc/systemd/system/snowflake.service
-systemctl daemon-reload
-systemctl enable --now snowflake.service
 msg_ok "Installed Snowflake"
+
+msg_info "Creating Service"
+cat << 'EOF' > /etc/systemd/system/snowflake.service
+[Unit]
+Description=Snowflake
+Wants=network.target
+After=syslog.target network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=10
+
+[Service]
+Type=simple
+ExecStart=/home/snowflake/snowflake/proxy/proxy -log /home/snowflake/snowflake.log
+Restart=on-failure
+RestartSec=5
+KillMode=process
+User=snowflake
+Group=snowflake
+
+[Install]
+WantedBy=multi-user.target
+EOF
+ln -s /usr/share/jellyfin/web/ /usr/lib/jellyfin/bin/jellyfin-web
+msg_ok "Created Service"
 
 PASS=$(grep -w "root" /etc/shadow | cut -b6);
   if [[ $PASS != $ ]]; then
@@ -97,6 +117,8 @@ ExecStart=-/sbin/agetty --autologin root --noclear --keep-baud tty%I 115200,3840
 EOF
 systemctl daemon-reload
 systemctl restart $(basename $(dirname $GETTY_OVERRIDE) | sed 's/\.d//')
+systemctl enable --now snowflake.service
+
 msg_ok "Customized Container"
 msg_info "Cleaning up"
 apt-get autoremove >/dev/null
