@@ -266,20 +266,3 @@ After the script completes, If you're dissatisfied with the default settings, cl
 ____________________________________________________________________________________________
 
 </details>
-
-<details>
-<summary markdown="span">Tor Snowflake LXC</summary>
-
-<h1 align="center" id="heading"> Tor Snowflake Server LXC </h1>
-
-To create a Tor Snowflake LXC, run the following in the Proxmox web shell.
-
-```
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/ct/snowflake_container.sh)"
-```
-<h3 align="center" id="heading">Default Settings:  512MB RAM - 4GB Storage - 1vCPU</h3>
-
-
-____________________________________________________________________________________________
-
-</details>
