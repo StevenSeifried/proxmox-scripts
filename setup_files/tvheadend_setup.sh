@@ -44,15 +44,8 @@ apt-get -qqy install \
     lsb-release \
     ca-certificates &>/dev/null
     
-echo -e "${CHECKMARK} \e[1;92m Adding Tvheadend Repo... \e[0m"
-cat <<EOF > /etc/apt/sources.list.d/tvheadend.list.list
-deb [arch=amd64] https://apt.tvheadend.org/unstable bullseye main
-EOF
-
-wget -qO- https://doozer.io/keys/tvheadend/tvheadend/pgp | tee /etc/apt/trusted.gpg.d/tvheadend.asc &>/dev/null
-
 echo -e "${CHECKMARK} \e[1;92m Installing Tvheadend... \e[0m"
-export DEBIAN_FRONTEND=noninteractive
+curl -1sLf 'https://dl.cloudsmith.io/public/tvheadend/tvheadend/setup.deb.sh' | bash &>/dev/null
 apt-get update &>/dev/null
 apt-get -yq install tvheadend &>/dev/null
 
